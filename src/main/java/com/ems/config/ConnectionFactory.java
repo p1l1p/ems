@@ -1,35 +1,19 @@
 package com.ems.config;
 
-import com.mysql.jdbc.Driver;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
+import javax.sql.DataSource;
 
 public class ConnectionFactory {
-    public static final String URL = "jdbc:mysql://localhost:3306/ems";
-    public static final String USER = "root";
-    public static final String PASS = "root";
+    @Resource
+    private static DataSource dataSource;
 
-    /**
-     * Get a connection to database
-     * @return Connection object
-     */
-    public static Connection getConnection()
-    {
-        try {
-            DriverManager.registerDriver(new Driver());
-            return DriverManager.getConnection(URL, USER, PASS);
-        } catch (SQLException ex) {
-            throw new RuntimeException("Error connecting to the database", ex);
-        }
+    public static void setDataSource(DataSource dataSource) {
+        ConnectionFactory.dataSource = dataSource;
     }
 
-    /**
-     * Test Connection
-     */
-    public static void main(String[] args) {
-        Connection connection = ConnectionFactory.getConnection();
+    public static DataSource getDataSource() {
+        return dataSource;
     }
-
 }

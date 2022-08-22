@@ -4,29 +4,27 @@
 
 <html>
 <head>
-    <title>Employee</title>
+    <title>Employee's Salary</title>
 </head>
 <body>
 <h1>Beautiful and nice table</h1>
 <table>
     <tr>
         <td>
-            Id
+            Salary id
         </td>
         <td>
-            Firstname
+            Employee Full Name
         </td>
         <td>
-            Lastname
+            Salary Amount
         </td>
     </tr>
-    <c:forEach items="${empList}" var="employee">
-        <tr>
-            <td>${employee.id}</td>
-            <td>${employee.firstName}</td>
-            <td>${employee.lastName}</td>
-        </tr>
-    </c:forEach>
+    <tr>
+        <td>${salary.employeeId}</td>
+        <td>${employee.lastName}, ${employee.firstName}</td>
+        <td>${salary.amount}</td>
+    </tr>
 </table>
 </body>
 </html>

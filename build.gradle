@@ -17,9 +17,19 @@ dependencies {
     implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
     implementation 'javax.servlet:jstl:1.2'
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.apache.tomcat:tomcat-jdbc:10.1.0-M17'
     //implementation 'org.springframework.boot:spring-boot-starter-tomcat'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'junit:junit:4.13.1'
+    implementation 'junit:junit:4.13.1'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa') {
+        exclude group: 'com.zaxxer', module: 'HikariCP'
+    }
+    implementation('org.springframework.boot:spring-boot-starter-jdbc') {
+        exclude group: 'com.zaxxer', module: 'HikariCP'
+    }
 }
 
 tasks.named('test') {
